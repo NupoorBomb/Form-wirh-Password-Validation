@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			div{
+			margin : 10%;
+			color : white;
+			border-style: solid;
+			padding: 20px;
+			}
+
+			body{
+			background : url("image.jfif");
+			}
+		</style>		
+	</head>
+	<body>
+		<h2 style = "color: white;margin:7%;"><center> Login Details:</center></h2>
+		<form class = "pure-form" action="27 part 1.html">
+		<div>
+         		<label for="firstname">First Name: </label>  
+              		<input type="text" id="firstname" name="firstname" /> 
+  			<label for="lastname">Last Name: </label>  
+              		<input type="text" id="lastname" name="lastname" required/> <br/> <br>
+  			
+			<label for="email">Email: </label>
+              		<input type="Email" id="email" name="email" required/> <br><br>
+			
+			<label for="mobile">Mobile Number:</label>
+              		<input type="text" id="mobile" name="mobile" pattern="[789][0-9]{9}" required/> <br><br> 				
+			
+			<label for="gender"> Gender: </label>
+			Male: <input type = "radio" name = "gender" value="male"/>
+			Female: <input type = "radio" name = "gender" value="female"/> <br><br>
+
+			Address:<textarea rows="2" cols="20"></textarea><br><br>
+
+			<label for="pass">Enter Password</label>
+			<input type = "Password" id="pass" name = "pass" required/><br><br>
+
+			<label for="conf_pass">Confirm Password</label>
+			<input type = "Password" id="conf_pass" name = "conf_pass" required/><br><br>
+
+			<button type = "reset" name = "first_name">Clear</button>
+			<button type = "submit" class= "pure-button pure-button-primary">Submit</button><br><br>
+		</div>
+      		</form>
+
+		<script>
+			var pass = document.getElementById("pass"),
+				conf_pass = document.getElementById("conf_pass");
+			function validatePassword()
+			{
+				if(pass.value == conf_pass.value){
+					conf_pass.setCustomValidity("Password Match");
+				}
+				else
+				{
+					conf_pass.setCustomValidity("Password Dont Match");
+				}
+			}
+			pass.onchange = validatePassword;
+			conf_pass.onkeyup = validatePassword;
+		</script>
+	</body>
+</html>
