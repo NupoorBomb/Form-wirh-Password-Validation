@@ -2,61 +2,100 @@
 <html>
 	<head>
 		<style>
-			div{
-			margin : 10%;
-			color : white;
+			body, html {
+			height: 100%;
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			}
+		
+			.bg_img{
+			background-image: url("image.jpg");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 100%;
+			}
+			
+			.container{
+			margin-left : 25%;
+			margin-right : 25%;
+			padding : 10%;
+			color : Black;
 			border-style: solid;
+			padding: 10px;
+			}			
+			
+			.alert {
 			padding: 20px;
+			background-color: #f44336;
+			color: white;
 			}
 
-			body{
-			background : url("image.jfif");
-			}
-		</style>		
+		</style>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>		
 	</head>
 	<body>
-		<h2 style = "color: white;margin:7%;"><center> Login Details:</center></h2>
-		<form class = "pure-form" action="27 part 1.html">
-		<div>
-         		<label for="firstname">First Name: </label>  
-              		<input type="text" id="firstname" name="firstname" /> 
-  			<label for="lastname">Last Name: </label>  
-              		<input type="text" id="lastname" name="lastname" required/> <br/> <br>
-  			
-			<label for="email">Email: </label>
-              		<input type="Email" id="email" name="email" required/> <br><br>
-			
-			<label for="mobile">Mobile Number:</label>
-              		<input type="text" id="mobile" name="mobile" pattern="[789][0-9]{9}" required/> <br><br> 				
-			
-			<label for="gender"> Gender: </label>
-			Male: <input type = "radio" name = "gender" value="male"/>
-			Female: <input type = "radio" name = "gender" value="female"/> <br><br>
+		
+		<div class = "bg_img">
+		<div class = "container">
+		<h2 style = "margin-top : 20px;"><center>UdaipurGiftHouse Login Form</center></h2>
+			<form class = "pure-form" action="27 part 1.html">
+				<div>
+					<label for="firstname">First Name : </label>
+						<input type="text" class="form-control" id="firstname" name="firstname" /> <br><br>
+					<label for="lastname">Last Name : </label> <br> 
+						<input type="text" class="form-control" id="lastname" name="lastname" required/> <br/> <br>
+					
+					<label for="email">Email : </label>
+						<input type="Email" class="form-control" id="email" name="email" required/> <br><br>
+					
+					<label for="mobile">Mobile Number :</label>
+						<input type="text" class="form-control" name="mobile" pattern="[789][0-9]{9}" id="mobile"  onkeypress="return isNumber(event)"   value =" " required/> <br>				
+					
+					<script>
+					function isNumber(evt) {
+					evt = (evt) ? evt : window.event;
+						var charCode = (evt.which) ? evt.which : evt.keyCode;
+						if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+							return false;
+						}
+						return true;
+					};
+					</script>
+					
+					<label for="gender"> Gender : </label><br>
+					Male <input type = "radio" name = "gender" value="male"/>
+					Female <input type = "radio" name = "gender" value="female"/> <br><br>
 
-			Address:<textarea rows="2" cols="20"></textarea><br><br>
+					<label for="address"> Address : </label><br>
+					<textarea rows="2" cols="20" name = "address" class="form-control" ></textarea><br><br>
 
-			<label for="pass">Enter Password</label>
-			<input type = "Password" id="pass" name = "pass" required/><br><br>
+					<label for="pass">Enter Password :</label>
+					<input type = "Password" class="form-control" id="pass" name = "pass" required/><br><br>
 
-			<label for="conf_pass">Confirm Password</label>
-			<input type = "Password" id="conf_pass" name = "conf_pass" required/><br><br>
+					<label for="conf_pass">Confirm Password : </label>
+					<input type = "Password" class="form-control" id="conf_pass" name = "conf_pass" required/><br><br>
 
-			<button type = "reset" name = "first_name">Clear</button>
-			<button type = "submit" class= "pure-button pure-button-primary">Submit</button><br><br>
+					<button type = "reset" name = "first_name">Clear</button>
+					<button type = "submit" class= "pure-button pure-button-primary" value="Submit">Submit</button><br><br>
+				</div>
+				</form>
 		</div>
-      		</form>
+		</div>
 
 		<script>
 			var pass = document.getElementById("pass"),
 				conf_pass = document.getElementById("conf_pass");
 			function validatePassword()
 			{
-				if(pass.value == conf_pass.value){
-					conf_pass.setCustomValidity("Password Match");
+				if(pass.value != conf_pass.value){
+					conf_pass.setCustomValidity("Password Don't Match");
 				}
 				else
 				{
-					conf_pass.setCustomValidity("Password Dont Match");
+					conf_pass.setCustomValidity('');
 				}
 			}
 			pass.onchange = validatePassword;
